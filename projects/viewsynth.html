@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>LiDAR view synthesis | Wilson Wu</title>
+<meta name="description" content="LiDAR view synthesis">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<div class="detail">
+<nav class="crumb"><a href="../index.html#viewsynth">Back to all projects</a></nav>
+<header class="dhead">
+<div><p class="sheetno">Sheet 5 of 10</p><h1>LiDAR view synthesis</h1></div>
+<dl class="tb"><dt>Type</dt><dd>Research, ASAR Lab</dd><dt>Advisor</dt><dd>Prof. Jason Rife</dd><dt>Status</dt><dd class="st">Complete</dd></dl>
+</header>
+<div class="dbody">
+
+<p>Undergraduate research in Prof. Jason Rife's ASAR Lab at Tufts. Given two LiDAR frames captured from different positions, the goal is to synthesize what the scene looks like from the reference frame using data from the new frame, which lets you compare scans taken from arbitrary sensor poses, and I scored each method by the RMSE between the synthesized and ground-truth range images.</p>
+<ul class="bul">
+<li>Built a full MATLAB benchmarking pipeline running 6 interpolation methods across 60-frame datasets with ICP pose registration</li>
+<li>Methods compared: bilinear splatting with Gaussian hole filling, bilinear splat only, nearest neighbor, linear, triangle warp, and FFT lookup</li>
+<li>Designed a novel FFT-based method evaluating fractional IDFT at pose-transformed reference pixel positions, eliminating scatter and gridding entirely</li>
+<li>Results evaluated using RMSE, median error, 95th percentile error, and coverage vs pose distance</li>
+<li>Data collected on Ouster OS2-128 (128x2048) from urban driving at Volpe National Transportation Systems Center</li>
+</ul>
+<p>The main finding was that interpolation error isn't random, since each method fails in a structured, scene-dependent way at depth discontinuities, although benchmarking like this gives an empirical characterization rather than certified bounds.</p>
+<div class="pics"><a class="pic" style="--ar:1.829" href="../img/carousel/lidar-4.png"><img src="../img/web/lidar-range.jpg" alt="Four LiDAR range images: current, FFT-interpolated, reference, and per-pixel difference" width="1600" height="875" loading="lazy"></a><a class="pic" style="--ar:1.632" href="../img/carousel/RMSE.png"><img src="../img/carousel/RMSE.png" alt="RMSE versus pose distance for five interpolation methods" width="1940" height="1189" loading="lazy"></a><a class="pic" style="--ar:1.333" href="../img/carousel/lidar-poster.png"><img src="../img/web/lidar-poster.jpg" alt="Research poster for the LiDAR view synthesis project" width="2000" height="1500" loading="lazy"></a></div>
+<p><a href="https://github.com/wilsonwu49/lidar-reconstruction-research">Code on GitHub</a></p>
+
+</div>
+<nav class="crumb end"><a href="../index.html#viewsynth">Back to all projects</a><a href="navvehicle.html">Next: Autonomous navigation vehicle</a></nav>
+</div>
+
+<dialog id="viewer" aria-label="Image viewer">
+<button class="close" type="button">Close</button>
+<div class="stage"></div>
+<p class="cap"></p>
+</dialog>
+<script src="../js/site.js"></script>
+</body>
+</html>

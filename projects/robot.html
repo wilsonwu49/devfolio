@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>LiDAR autonomous navigation robot | Wilson Wu</title>
+<meta name="description" content="LiDAR autonomous navigation robot">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<div class="detail">
+<nav class="crumb"><a href="../index.html#robot">Back to all projects</a></nav>
+<header class="dhead">
+<div><p class="sheetno">Sheet 1 of 10</p><h1>LiDAR autonomous navigation robot</h1></div>
+<dl class="tb"><dt>Type</dt><dd>Personal project, built alone</dd><dt>Hardware</dt><dd>RPLIDAR, STM32L432KC, Raspberry Pi 4</dd><dt>Status</dt><dd class="st">Simulation only</dd></dl>
+</header>
+<div class="dbody">
+
+<p>I started this robot to get hands-on experience with LiDAR, and it grew into my main project as I taught myself state estimation and control through study guides I wrote along the way. The software runs multi-rate across an STM32 and a Raspberry Pi using plain Python threading instead of ROS 2, and it does LiDAR odometry rather than full SLAM, so there is no loop closure.</p>
+<blockquote class="note"><p>A rough pipeline with a rigorous safety filter is a paper. A beautifully integrated pipeline with no safety filter is a robot demo.</p></blockquote>
+<figure class="flow" aria-label="Pipeline block diagram">
+<ol>
+<li><b>Scan</b>LiDAR, deskewed with IMU</li>
+<li><b>Point-to-line ICP</b>Returns its own covariance</li>
+<li><b>Error-state EKF</b>15 states on SO(3)</li>
+<li><b>Occupancy grid</b>Log-odds</li>
+<li><b>A*</b>Planner</li>
+<li><b>Pure pursuit</b>Tracking</li>
+<li class="hot"><b>CBF-QP filter</b>Clamps the command</li>
+</ol>
+<figcaption>Scan to motor command.</figcaption>
+</figure>
+<div class="pics"><figure class="pic slot" style="--ar:1.778"><span>Simulation run, GIF</span><small>16:9</small><code>&lt;img src=&quot;img/robot/sim.gif&quot; alt=&quot;Simulated robot navigating a mapped room&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.333"><span>Bench photo of the hardware</span><small>4:3</small><code>&lt;img src=&quot;img/robot/bench.jpg&quot; alt=&quot;Robot chassis with RPLIDAR, STM32 and Raspberry Pi on the bench&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.5"><span>CBF filter clamping the command near an obstacle</span><small>3:2</small><code>&lt;img src=&quot;img/robot/cbf-clamp.png&quot; alt=&quot;Commanded vs filtered velocity as the robot nears an obstacle&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1"><span>Occupancy grid</span><small>1:1</small><code>&lt;img src=&quot;img/robot/occupancy.png&quot; alt=&quot;Log-odds occupancy grid built from simulated scans&quot;&gt;</code></figure></div>
+<h2>What works, in simulation</h2>
+<ul class="bul">
+<li><b>ICP that knows when it is lost.</b> It returns a covariance from σ²(AᵀWA)⁻¹, gated on condition number and inlier count. In a featureless corridor the eigenvalue ratio along the unobservable axis reaches about 10¹⁷, so the match gets rejected instead of feeding the filter a confident wrong answer.</li>
+<li><b>Error-state EKF.</b> 15 states, Hamilton quaternion attitude, Joseph-form covariance, chi-squared NIS gating on every update. Process noise is seeded from the BMI270 datasheet. Jacobians check out against finite differences.</li>
+<li><b>Estimator plus ICP.</b> A 200-step run with prediction, encoder updates and ICP updates ends with 3.3 mm position error and 3.4 mrad yaw error.</li>
+<li><b>Occupancy grid.</b> Log-odds with clamping and Bresenham ray tracing. On a 360° synthetic fan against a straight wall, all ~90 wall-hitting beams land in exactly one grid column. Free space is only carved out to a trusted clearing distance, since a missing return may be a dark surface.</li>
+<li><b>Planning and control.</b> A* planner, pure pursuit tracking, and a CBF-QP safety filter on the command.</li>
+</ul>
+<aside class="cloud">
+<p><b>A negative result:</b> I designed the safety margin to grow with √tr(P), the size of the filter's covariance, so that a less certain robot would keep more distance from obstacles, and it turned out to have the same structure as the tr(Σ) penalty in Prof. Cosner's ORIO paper, which I read afterward. In simulation it did not help, and it may have made things worse.</p>
+<p class="ph">[Optional: one line on what you think caused it.]</p>
+</aside>
+<h2>Limits</h2>
+<p>Nothing has run on hardware yet, since the main event loop and hardware bring-up aren't done and the STM32 firmware for the encoders, IMU, motor PWM and the link to the Pi is still unwritten. Every test so far uses synthetic data generated under the estimator's own assumptions, which means the noise is Gaussian because I drew it that way, and characterizing the real IMU bias will need an Allan variance log I haven't taken. The first RPLIDAR is also blocked by a faulty USB adapter, so I've ordered a replacement A1M8.</p>
+<h2>Next semester</h2>
+<p>I'm planning to open source the code and run it as a build project with the Tufts Robotics Club, where I can teach members the estimation and safe-control parts. <a class="ph" href="#">[Repo link, once public]</a></p>
+
+</div>
+<nav class="crumb end"><a href="../index.html#robot">Back to all projects</a><a href="reu.html">Next: Salt stress in hydroponic tomatoes</a></nav>
+</div>
+
+<dialog id="viewer" aria-label="Image viewer">
+<button class="close" type="button">Close</button>
+<div class="stage"></div>
+<p class="cap"></p>
+</dialog>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Snake arcade game | Wilson Wu</title>
+<meta name="description" content="Snake arcade game">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<div class="detail">
+<nav class="crumb"><a href="../index.html#snake">Back to all projects</a></nav>
+<header class="dhead">
+<div><p class="sheetno">Sheet 10 of 10</p><h1>Snake arcade game</h1></div>
+<dl class="tb"><dt>Type</dt><dd>ES4, Digital Logic Circuits</dd><dt>Status</dt><dd class="st">Complete</dd></dl>
+</header>
+<div class="dbody">
+
+<p>Final project for ES4: Digital Logic Circuits, built as a team. A complete implementation of the arcade game Snake written in VHDL and deployed on an ICEUP5K (iCE40 UltraPlus) FPGA. I worked mainly on the graphics, writing a Python script that converts pixel art into VHDL block ROM, implementing the sprites and the pattern generation for the VGA display, changing the ROM addressing to support the game grid, and contributing to the core game state logic.</p>
+<ul class="bul">
+<li>Snake game implemented entirely in VHDL on an FPGA, rendered over VGA (640×480) on a 16×16 grid</li>
+<li>NES gamepad input with real-time score and high-score tracking</li>
+<li>Custom pixel-art graphics for the snake, apple, start screen, and game-over screen</li>
+<li>Finite state machine controlling movement, wall/self collision detection, tail updates, and RNG apple spawning</li>
+<li>RAM game board encoding: snake body, apple, and background</li>
+<li>Stable game tick and VGA timing derived from 12 MHz system clock</li>
+</ul>
+<div class="pics"><a class="pic" style="--ar:0.975" href="../img/carousel/es4.png"><img src="../img/carousel/es4.png" alt="Snake running on the FPGA over VGA" width="465" height="477" loading="lazy"></a><a class="pic" style="--ar:1.743" href="../img/carousel/es4_1.png"><img src="../img/carousel/es4_1.png" alt="Snake game with annotations" width="774" height="444" loading="lazy"></a><a class="pic" style="--ar:2.335" href="../img/carousel/es4_2.png"><img src="../img/carousel/es4_2.png" alt="Snake state machine diagram" width="913" height="391" loading="lazy"></a></div>
+<p><a href="https://github.com/wilsonwu49/snake">Code on GitHub</a></p>
+
+</div>
+<nav class="crumb end"><a href="../index.html#snake">Back to all projects</a></nav>
+</div>
+
+<dialog id="viewer" aria-label="Image viewer">
+<button class="close" type="button">Close</button>
+<div class="stage"></div>
+<p class="cap"></p>
+</dialog>
+<script src="../js/site.js"></script>
+</body>
+</html>

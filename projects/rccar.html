@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>WiFi-controlled RC car with speaker | Wilson Wu</title>
+<meta name="description" content="WiFi-controlled RC car with speaker">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<div class="detail">
+<nav class="crumb"><a href="../index.html#rccar">Back to all projects</a></nav>
+<header class="dhead">
+<div><p class="sheetno">Sheet 8 of 10</p><h1>WiFi-controlled RC car with speaker</h1></div>
+<dl class="tb"><dt>Type</dt><dd>Embedded systems, team</dd><dt>Status</dt><dd class="st">Complete</dd></dl>
+</header>
+<div class="dbody">
+
+<p>Wi-Fi controlled robotic car built using an STM32L432KC and ESP32 with a Python client interface. The system separates networking and real-time control across two microcontrollers for responsive motor control and audio output while handling wireless communication.</p>
+<ul class="bul">
+<li>Dual-microcontroller architecture: ESP32 handles Wi-Fi communication while STM32 performs real-time motor and audio control</li>
+<li>Python client sends commands over a local Wi-Fi network hosted by the ESP32</li>
+<li>Low-latency I²C communication between ESP32 and STM32 for command transfer</li>
+<li>STM32 PWM motor control driving two DC motors through an H-bridge for speed and turning control</li>
+<li>Sounds generated using STM32 DMA-driven DAC output connected to an amplifier and speaker</li>
+</ul>
+<div class="pics"><a class="pic" style="--ar:1.333" href="../img/carousel/ee14_2.jpg"><img src="../img/web/rccar-team.jpg" alt="The team with the WiFi RC car" width="1400" height="1050" loading="lazy"></a><a class="pic" style="--ar:1.497" href="../img/web/rccar-poster.jpg"><img src="../img/web/rccar-poster.jpg" alt="WiFi RC car project poster" width="1229" height="821" loading="lazy"></a></div>
+<p><a href="https://github.com/wilsonwu49/Car">Code on GitHub</a></p>
+
+</div>
+<nav class="crumb end"><a href="../index.html#rccar">Back to all projects</a><a href="cpu.html">Next: 5-stage pipelined CPU</a></nav>
+</div>
+
+<dialog id="viewer" aria-label="Image viewer">
+<button class="close" type="button">Close</button>
+<div class="stage"></div>
+<p class="cap"></p>
+</dialog>
+<script src="../js/site.js"></script>
+</body>
+</html>
