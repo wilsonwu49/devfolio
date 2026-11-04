@@ -7,6 +7,12 @@
 <title>Wilson Wu</title>
 <meta name="description" content="Wilson Wu, Electrical Engineering at Tufts. Estimation, mapping and safe control for robots that act on uncertain estimates.">
 <link rel="icon" href="favicon.png">
+<link rel="canonical" href="https://wilsonwu49.github.io/devfolio/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wilson Wu, Electrical Engineering at Tufts">
+<meta property="og:description" content="Estimation, mapping and safe control for robots that act on uncertain estimates.">
+<meta property="og:url" content="https://wilsonwu49.github.io/devfolio/">
+<meta property="og:image" content="https://wilsonwu49.github.io/devfolio/img/web/lidar-range.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -24,7 +30,7 @@
 <dt>Email</dt><dd><a href="mailto:wilson.wu@tufts.edu">wilson.wu@tufts.edu</a></dd>
 <dt>Code</dt><dd><a href="https://github.com/wilsonwu49">github.com/wilsonwu49</a></dd>
 <dt>Profile</dt><dd><a href="https://www.linkedin.com/in/wilsonwu49">LinkedIn</a></dd>
-<dt>Résumé</dt><dd><a href="docs/Resume.pdf">PDF</a> <span class="ph">[update PDF]</span></dd>
+<dt>Résumé</dt><dd><a href="docs/Resume.pdf">PDF</a></dd>
 </dl>
 </div>
 <div class="intro">
@@ -44,28 +50,28 @@
 <a class="side open" href="projects/robot.html"><p class="sheetno">Sheet 1 of 10</p><h2>LiDAR autonomous navigation robot</h2><dl class="tb"><dt>Type</dt><dd>Personal project, built alone</dd><dt>Hardware</dt><dd>RPLIDAR, STM32L432KC, Raspberry Pi 4</dd><dt>Status</dt><dd class="st">Simulation only</dd></dl><span class="more">Open full write-up</span></a>
 <div class="main">
 <p class="sum">An autonomous ground robot I'm building on my own around an RPLIDAR, an STM32 and a Raspberry Pi, with a navigation stack written from scratch in Python that runs from scan-matching ICP and a 15-state error-state EKF through a log-odds occupancy grid, an A* planner, pure pursuit tracking and a control barrier function (CBF) safety filter. I started it to get hands-on experience with LiDAR and taught myself the estimation and control along the way through study guides I wrote as I went, and so far the whole stack has been validated in simulation rather than on hardware.</p>
-<aside class="cloud"><p><b>A negative result:</b> making the CBF safety margin grow with the filter's uncertainty did not help in simulation, and it may have made things worse.</p></aside><p class="now">Currently working on bringing it up on hardware.</p><div class="pics"><figure class="pic slot" style="--ar:1.778"><span>Simulation run, GIF</span><small>16:9</small><code>&lt;img src=&quot;img/robot/sim.gif&quot; alt=&quot;Simulated robot navigating a mapped room&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.333"><span>Bench photo of the hardware</span><small>4:3</small><code>&lt;img src=&quot;img/robot/bench.jpg&quot; alt=&quot;Robot chassis with RPLIDAR, STM32 and Raspberry Pi on the bench&quot;&gt;</code></figure></div>
+<aside class="cloud"><p><b>A negative result:</b> making the CBF safety margin grow with the filter's uncertainty did not help in simulation, and it may have made things worse.</p></aside><p class="now">Currently working on bringing it up on hardware.</p><template data-todo="image block: unwrap once at least one image below exists"><div class="pics"><template data-todo="image: Simulation run, GIF (16:9), save as img/robot/sim.gif"><a class="pic" style="--ar:1.778" href="img/robot/sim.gif"><img src="img/robot/sim.gif" alt="Simulated robot navigating a mapped room" loading="lazy"></a></template><template data-todo="image: Bench photo of the hardware (4:3), save as img/robot/bench.jpg"><a class="pic" style="--ar:1.333" href="img/robot/bench.jpg"><img src="img/robot/bench.jpg" alt="Robot chassis with RPLIDAR, STM32 and Raspberry Pi on the bench" loading="lazy"></a></template></div></template>
 </div>
 </article>
 <article class="proj" id="sparc">
 <div class="side"><p class="sheetno">Sheet 2 of 10</p><h2>Visibility-aware safe control</h2><dl class="tb"><dt>Type</dt><dd>Directed research, SPARC Lab</dd><dt>Advisor</dt><dd>Prof. Ryan Cosner</dd><dt>Hardware</dt><dd>Go2 robot dog</dd><dt>Status</dt><dd class="st">In progress</dd></dl></div>
 <div class="main">
-<p class="sum">A semantically aware safe control system in Prof. Ryan Cosner's SPARC Lab, where the robot has to avoid hazards that LiDAR can't see, like caution tape, and still respect them after they leave the camera's field of view, since the object and semantic maps start to degrade once that happens. It runs on a Go2 robot dog, and I'm adding to an existing project that already <span class="ph">[can …, finish this: e.g. handles interpretation, locomotion and control]</span>, working on planning trajectories that keep important objects in view so the robot doesn't lose track of hazards it has already seen.</p>
-<p class="now">Currently working on a simulation where unseen space starts out unsafe instead of safe.</p><div class="pics one"><figure class="pic slot" style="--ar:1.778"><span>Simulation with unseen space marked unsafe</span><small>16:9</small><code>&lt;img src=&quot;img/sparc/unseen-unsafe.png&quot; alt=&quot;Simulation where unobserved space starts unsafe&quot;&gt;</code></figure></div>
+<p class="sum">A semantically aware safe control system in Prof. Ryan Cosner's SPARC Lab, where the robot has to avoid hazards that LiDAR can't see, like caution tape, and still respect them after they leave the camera's field of view, since the object and semantic maps start to degrade once that happens. It runs on a Go2 robot dog, and I'm adding to an existing project<template data-todo="say what the existing project already does"> that already handles …</template>, working on planning trajectories that keep important objects in view so the robot doesn't lose track of hazards it has already seen.</p>
+<p class="now">Currently working on a simulation where unseen space starts out unsafe instead of safe.</p><template data-todo="image block: unwrap once at least one image below exists"><div class="pics one"><template data-todo="image: Simulation with unseen space marked unsafe (16:9), save as img/sparc/unseen-unsafe.png"><a class="pic" style="--ar:1.778" href="img/sparc/unseen-unsafe.png"><img src="img/sparc/unseen-unsafe.png" alt="Simulation where unobserved space starts unsafe" loading="lazy"></a></template></div></template>
 </div>
 </article>
 <article class="proj" id="reu">
 <a class="side open" href="projects/reu.html"><p class="sheetno">Sheet 3 of 10</p><h2>Image-based detection of salt stress in hydroponic tomatoes</h2><dl class="tb"><dt>Type</dt><dd>NSF REU, University of Wyoming</dd><dt>Advisor</dt><dd>Prof. Liping Wang</dd><dt>Output</dt><dd>GreenSys2027 abstract, first author</dd><dt>Status</dt><dd class="st">Abstract submitted</dd></dl><span class="more">Open full write-up</span></a>
 <div class="main">
 <p class="sum">During an NSF REU with Prof. Liping Wang, I built a program that looks at photos of tomato plants grown in salty water and estimates how much salt each plant was given, by outlining the plant in the image and comparing its color, texture and shape against plants grown without salt. Across 149 plants its estimates ranked the plants almost the same way the real salt levels did, with a rank correlation of 0.921, and I'm first author on the abstract we submitted to GreenSys2027. The outlining step scored very well overall, but it made most of its mistakes on damaged leaves, which are exactly the part that shows the stress.</p>
-<div class="pics"><figure class="pic slot" style="--ar:1.333"><span>Segmentation overlay</span><small>4:3</small><code>&lt;img src=&quot;img/reu/segmentation.png&quot; alt=&quot;YOLOv8 mask over a tomato shoot&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.333"><span>Mask error on injured tissue</span><small>4:3</small><code>&lt;img src=&quot;img/reu/injured-mask.png&quot; alt=&quot;Mask boundary missing injured leaf tissue&quot;&gt;</code></figure></div>
+<template data-todo="image block: unwrap once at least one image below exists"><div class="pics"><template data-todo="image: Segmentation overlay (4:3), save as img/reu/segmentation.png"><a class="pic" style="--ar:1.333" href="img/reu/segmentation.png"><img src="img/reu/segmentation.png" alt="YOLOv8 mask over a tomato shoot" loading="lazy"></a></template><template data-todo="image: Mask error on injured tissue (4:3), save as img/reu/injured-mask.png"><a class="pic" style="--ar:1.333" href="img/reu/injured-mask.png"><img src="img/reu/injured-mask.png" alt="Mask boundary missing injured leaf tissue" loading="lazy"></a></template></div></template>
 </div>
 </article>
 <article class="proj" id="radar">
 <div class="side"><p class="sheetno">Sheet 4 of 10</p><h2>Multi-object tracking from mmWave radar</h2><dl class="tb"><dt>Type</dt><dd>Senior design, team</dd><dt>Sponsor</dt><dd>MIT Lincoln Laboratory</dd><dt>Status</dt><dd class="st">In progress</dd></dl></div>
 <div class="main">
 <p class="sum">A sensor package for my senior design project, sponsored by MIT Lincoln Laboratory, that fuses 60 GHz mmWave radar with a camera into a real-time 3D view for object detection and collision avoidance.</p>
-<p class="now">Currently working on the radar side and processing its data for object detection.</p><div class="pics"><figure class="pic slot" style="--ar:1.778"><span>Radar data processing</span><small>16:9</small><code>&lt;img src=&quot;img/radar/processing.png&quot; alt=&quot;mmWave radar point cloud processed into detected objects&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.778"><span>Combined radar and camera view</span><small>16:9</small><code>&lt;img src=&quot;img/radar/fusion.png&quot; alt=&quot;Radar detections overlaid on the camera view&quot;&gt;</code></figure></div>
+<p class="now">Currently working on the radar side and processing its data for object detection.</p><template data-todo="image block: unwrap once at least one image below exists"><div class="pics"><template data-todo="image: Radar data processing (16:9), save as img/radar/processing.png"><a class="pic" style="--ar:1.778" href="img/radar/processing.png"><img src="img/radar/processing.png" alt="mmWave radar point cloud processed into detected objects" loading="lazy"></a></template><template data-todo="image: Combined radar and camera view (16:9), save as img/radar/fusion.png"><a class="pic" style="--ar:1.778" href="img/radar/fusion.png"><img src="img/radar/fusion.png" alt="Radar detections overlaid on the camera view" loading="lazy"></a></template></div></template>
 </div>
 </article>
 <article class="proj" id="viewsynth">
@@ -76,7 +82,7 @@
 </div>
 </article>
 <article class="proj" id="navvehicle">
-<a class="side open" href="projects/navvehicle.html"><p class="sheetno">Sheet 6 of 10</p><h2>Autonomous navigation vehicle</h2><dl class="tb"><dt>Type</dt><dd>Junior design, <span class="ph">[course number]</span></dd><dt>Status</dt><dd class="st">Complete</dd></dl><span class="more">Open full write-up</span></a>
+<a class="side open" href="projects/navvehicle.html"><p class="sheetno">Sheet 6 of 10</p><h2>Autonomous navigation vehicle</h2><dl class="tb"><dt>Type</dt><dd>Junior design<template data-todo="course number">, EE 31</template></dd><dt>Status</dt><dd class="st">Complete</dd></dl><span class="more">Open full write-up</span></a>
 <div class="main">
 <p class="sum">A swarm of autonomous robots for junior design that talked to each other over a WebSocket while doing lane following along with color and obstacle detection, so each robot could pick an efficient path and the group could move without colliding.</p>
 <div class="pics one"><a class="pic" style="--ar:1.524" href="img/ee31.png"><img src="img/ee31.png" alt="Junior design robot on the bench" width="352" height="231" loading="lazy"></a></div><p class="foot"><a href="video/ee31_2.mp4" class="vidlink">Watch it run (video)</a></p>
@@ -120,7 +126,7 @@
 </section>
 </main>
 <footer>
-<p>Ten weekly projects from ME-35 are in my <a class="ph" href="#">[ME-35 Notion log]</a>.</p>
+<template data-todo="ME-35 Notion log link"><p>Ten weekly projects from ME-35 are in my <a href="#">ME-35 Notion log</a>.</p></template>
 <p class="fl"><a href="mailto:wilson.wu@tufts.edu">wilson.wu@tufts.edu</a> <a href="https://github.com/wilsonwu49">GitHub</a> <a href="https://www.linkedin.com/in/wilsonwu49">LinkedIn</a></p>
 </footer>
 

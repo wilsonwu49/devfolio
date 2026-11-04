@@ -36,7 +36,7 @@
 </ol>
 <figcaption>Scan to motor command.</figcaption>
 </figure>
-<div class="pics"><figure class="pic slot" style="--ar:1.778"><span>Simulation run, GIF</span><small>16:9</small><code>&lt;img src=&quot;img/robot/sim.gif&quot; alt=&quot;Simulated robot navigating a mapped room&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.333"><span>Bench photo of the hardware</span><small>4:3</small><code>&lt;img src=&quot;img/robot/bench.jpg&quot; alt=&quot;Robot chassis with RPLIDAR, STM32 and Raspberry Pi on the bench&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1.5"><span>CBF filter clamping the command near an obstacle</span><small>3:2</small><code>&lt;img src=&quot;img/robot/cbf-clamp.png&quot; alt=&quot;Commanded vs filtered velocity as the robot nears an obstacle&quot;&gt;</code></figure><figure class="pic slot" style="--ar:1"><span>Occupancy grid</span><small>1:1</small><code>&lt;img src=&quot;img/robot/occupancy.png&quot; alt=&quot;Log-odds occupancy grid built from simulated scans&quot;&gt;</code></figure></div>
+<template data-todo="image block: unwrap once at least one image below exists"><div class="pics"><template data-todo="image: Simulation run, GIF (16:9), save as ../img/robot/sim.gif"><a class="pic" style="--ar:1.778" href="../img/robot/sim.gif"><img src="../img/robot/sim.gif" alt="Simulated robot navigating a mapped room" loading="lazy"></a></template><template data-todo="image: Bench photo of the hardware (4:3), save as ../img/robot/bench.jpg"><a class="pic" style="--ar:1.333" href="../img/robot/bench.jpg"><img src="../img/robot/bench.jpg" alt="Robot chassis with RPLIDAR, STM32 and Raspberry Pi on the bench" loading="lazy"></a></template><template data-todo="image: CBF filter clamping the command near an obstacle (3:2), save as ../img/robot/cbf-clamp.png"><a class="pic" style="--ar:1.5" href="../img/robot/cbf-clamp.png"><img src="../img/robot/cbf-clamp.png" alt="Commanded vs filtered velocity as the robot nears an obstacle" loading="lazy"></a></template><template data-todo="image: Occupancy grid (1:1), save as ../img/robot/occupancy.png"><a class="pic" style="--ar:1" href="../img/robot/occupancy.png"><img src="../img/robot/occupancy.png" alt="Log-odds occupancy grid built from simulated scans" loading="lazy"></a></template></div></template>
 <h2>What works, in simulation</h2>
 <ul class="bul">
 <li><b>ICP that knows when it is lost.</b> It returns a covariance from σ²(AᵀWA)⁻¹, gated on condition number and inlier count. In a featureless corridor the eigenvalue ratio along the unobservable axis reaches about 10¹⁷, so the match gets rejected instead of feeding the filter a confident wrong answer.</li>
@@ -47,12 +47,12 @@
 </ul>
 <aside class="cloud">
 <p><b>A negative result:</b> I designed the safety margin to grow with √tr(P), the size of the filter's covariance, so that a less certain robot would keep more distance from obstacles, and it turned out to have the same structure as the tr(Σ) penalty in Prof. Cosner's ORIO paper, which I read afterward. In simulation it did not help, and it may have made things worse.</p>
-<p class="ph">[Optional: one line on what you think caused it.]</p>
+<template data-todo="optional: one line on what you think caused it"><p>…</p></template>
 </aside>
 <h2>Limits</h2>
 <p>Nothing has run on hardware yet, since the main event loop and hardware bring-up aren't done and the STM32 firmware for the encoders, IMU, motor PWM and the link to the Pi is still unwritten. Every test so far uses synthetic data generated under the estimator's own assumptions, which means the noise is Gaussian because I drew it that way, and characterizing the real IMU bias will need an Allan variance log I haven't taken. The first RPLIDAR is also blocked by a faulty USB adapter, so I've ordered a replacement A1M8.</p>
 <h2>Next semester</h2>
-<p>I'm planning to open source the code and run it as a build project with the Tufts Robotics Club, where I can teach members the estimation and safe-control parts. <a class="ph" href="#">[Repo link, once public]</a></p>
+<p>I'm planning to open source the code and run it as a build project with the Tufts Robotics Club, where I can teach members the estimation and safe-control parts.<template data-todo="repo link, once public"> <a href="https://github.com/wilsonwu49/REPO">Code on GitHub</a>.</template></p>
 
 </div>
 <nav class="crumb end"><a href="../index.html#robot">Back to all projects</a><a href="reu.html">Next: Salt stress in hydroponic tomatoes</a></nav>
